@@ -1,0 +1,27 @@
+<div class="panel panel-default" ng-hide="displayResults">
+  <div class="panel-heading">
+    <h6> Javascript Question {{currentQuestion+1}} of {{totalQuestions}} </h6>
+    <h5 ng-bind="question"></h5>
+  </div>
+  <div class="panel-body">
+    <div ng-repeat="options in currentOptions"  class="input-group">
+        <input type="radio" ng-model="$parent.selectedAnswer" name="name" value="{{$index}}" />
+        <label>{{options}}</label>
+    </div>
+    <button class="btn btn-primary" ng-click="nextQuestion()">
+      {{buttonText}}
+    </button>
+  </div>
+</div>
+
+
+<div class="list-group col-sm-12" ng-show="displayResults">
+  <li class="list-group-item" style="display:flex;">
+    <div class="col-sm-6">You answered</div>
+    <div class="col-sm-6">Correct Answer</div>
+  </li>
+  <li class="list-group-item" style="display:flex;" ng-repeat="result in results" ng-class="{ 'list-group-item-danger' : !result.answersMatched , 'list-group-item-success' : result.answersMatched}">
+    <div class="col-sm-6">{{result.selectedAnswer}}</div>
+    <div class="col-sm-6">{{data[$index].answer}}</div>
+  </li>
+</div>
