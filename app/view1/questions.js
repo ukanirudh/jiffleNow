@@ -4,10 +4,12 @@ myApp.controller('View1Ctrl',function($scope, appFactory){
   $scope.data = '';
   $scope.currentQuestion = 0;
   $scope.selectedAnswer = 0;
+  $scope.correctAnswers = 0;
+
   $scope.question = '' ;
+  $scope.buttonText = 'Answer and move to next question';
   $scope.results = [];
   $scope.displayResults = false;
-  $scope.buttonText = 'Answer and move to next question';
 
   appFactory.getData().success(function(data){
     $scope.data = data;
@@ -24,6 +26,7 @@ myApp.controller('View1Ctrl',function($scope, appFactory){
       //console.log($scope.selectedAnswer);
       //console.log(data && data.answer);
       if ( $scope.selectedAnswer == ( data && data.answer ) ){
+        $scope.correctAnswers++ ;
         $scope.results.push({'selectedAnswer': $scope.selectedAnswer,'answersMatched':true });
       } else {
         $scope.results.push({'selectedAnswer': $scope.selectedAnswer,'answersMatched': false });
