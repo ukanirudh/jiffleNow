@@ -27,9 +27,9 @@ myApp.controller('View1Ctrl',function($scope, appFactory){
       //console.log(data && data.answer);
       if ( $scope.selectedAnswer == ( data && data.answer ) ){
         $scope.correctAnswers++ ;
-        $scope.results.push({'selectedAnswer': $scope.selectedAnswer,'answersMatched':true });
+        $scope.results.push({'selectedAnswer': parseInt($scope.selectedAnswer)+1,'answersMatched':true });
       } else {
-        $scope.results.push({'selectedAnswer': $scope.selectedAnswer,'answersMatched': false });
+        $scope.results.push({'selectedAnswer': parseInt($scope.selectedAnswer)+1,'answersMatched': false });
       }
 
         $scope.currentQuestion++;

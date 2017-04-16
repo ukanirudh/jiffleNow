@@ -16,13 +16,14 @@
 
 
 <div class="list-group col-sm-12" ng-show="displayResults">
+  <h3>Results</h3>
   <li class="list-group-item" style="display:flex;">
     <div class="col-sm-6">You answered</div>
     <div class="col-sm-6">Correct Answer</div>
   </li>
   <li class="list-group-item" style="display:flex;" ng-repeat="result in results" ng-class="{ 'list-group-item-danger' : !result.answersMatched , 'list-group-item-success' : result.answersMatched}">
-    <div class="col-sm-6">{{result.selectedAnswer}}</div>
-    <div class="col-sm-6">{{data[$index].answer}}</div>
+    <div class="col-sm-6">Option {{result.selectedAnswer}}</div>
+    <div class="col-sm-6">Option {{data[$index].answer+1}}</div>
   </li>
   <h4>Your score is {{correctAnswers}} of {{totalQuestions}}</h4>
 </div>
